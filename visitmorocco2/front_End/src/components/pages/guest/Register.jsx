@@ -1,16 +1,56 @@
 
 import './Register.css';
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 import Header from '../../sections/Header/Header';
 import Footer from '../../sections/Footer/Footer';
+import { useState } from 'react';
 
 
 
 
 const Register = () => {
+
+  const [nomUtilisateur, setNomUtilisateur] = useState("")
+  const [motDePasse, setMotDePasse] = useState("")
+  const [email, setEmail] = useState("")
+  const [image, setImage] = useState("")
+  const navigate  = useNavigate()
+
+
+
+  async function SignUp() {
+
+    // console.warn(nomUtilisateur,password,email,image)
+
+
+    let item = {
+      nomUtilisateur,
+      motDePasse,
+      email,
+      image
+    }
+    // console.warn(item)
+
+    let result = await fetch("http://127.0.0.1:8000/api/register", {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    result = await result.json()
+    localStorage.setItem("user_info", JSON.stringify(result))
+    navigate("/Login");
+  }
+
+
+
+
   return (
-    <div>
+    <>
       <Header />
 
 
@@ -28,15 +68,17 @@ const Register = () => {
 
                   <div className="relative">
                     <input
+
+                      value={nomUtilisateur} onChange={(e) => setNomUtilisateur(e.target.value)}
                       autoComplete="off"
-                      id="name"
-                      name="name"
+                      id="nomUtilisateur"
+                      name="nomUtilisateur"
                       type="text"
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
                       placeholder="Full Name"
                     />
                     <label
-                      htmlFor="email"
+                      htmlFor="nomUtilisateur"
                       className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
                     >
                       Full name
@@ -46,6 +88,7 @@ const Register = () => {
 
                   <div className="relative">
                     <input
+                      value={email} onChange={(e) => setEmail(e.target.value)}
                       autoComplete="off"
                       id="email"
                       name="email"
@@ -62,9 +105,10 @@ const Register = () => {
                   </div>
                   <div className="relative">
                     <input
+                      value={motDePasse} onChange={(e) => setMotDePasse(e.target.value)}
                       autoComplete="off"
-                      id="password"
-                      name="password"
+                      id="motDePasse"
+                      name="motDePasse"
                       type="password"
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
                       placeholder="Password"
@@ -79,36 +123,24 @@ const Register = () => {
 
 
 
-                  {/* <div className="relative">
-                    <input
-                      autoComplete="off"
-                      id="image"
-                      name="image"
-                      type="file"
-                      className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
-                      placeholder="image"
-                    />
-
-                  </div> */}
 
                   <div className="relative">
                     <label className="block mb-2 text-sm font-medium text-gray-500 dark:text-white" >Upload file</label>
-                    <input className="block w-full text-sm p-1 text-black border  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-cyan-100 dark:border-gray-400 dark:placeholder-gray-900" type="file" id="image"
+                    <input className="block w-full text-sm p-1 text-black border  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-cyan-100 dark:border-gray-400 dark:placeholder-gray-900"
+                      value={image} onChange={(e) => setImage(e.target.value)}
+                      type="file" id="image"
                       name="image"
+
+
+
                     />
                   </div>
 
 
 
 
-
-
-
-
-
-
                   <div className="relative">
-                    <button className="bg-cyan-500 text-white rounded-md px-2 py-1">Submit</button>
+                    <button onClick={SignUp} className="bg-cyan-500 text-white rounded-md px-2 py-1">Submit</button>
                   </div>
 
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">Already have an account?
@@ -174,7 +206,7 @@ const Register = () => {
 
 
       <Footer />
-    </div>
+    </>
   )
 }
 
