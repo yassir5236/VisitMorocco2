@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nom',
+        'description',
+    ];
+
+    public function destinations()
+    {
+        return $this->hasMany(Destination::class);
+    }
 }

@@ -71,8 +71,10 @@ class UtilisateurController extends Controller
 
         $user = Utilisateur::where('email', $request->email)->first();
         if (!$user || !Hash::check($request->motDePasse, $user->motDePasse)) {
+           
             return response()->json(['message' => 'Les informations d\'identification sont incorrectes'], 401);
         }
+      
 
         return response()->json(['message' => 'Connexion réussie', 'user' => $user], 200);
     }

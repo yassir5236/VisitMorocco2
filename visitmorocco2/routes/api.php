@@ -4,6 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\UtilisateurController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\InteretController;
+
+
+
 
 
 /*
@@ -30,10 +36,34 @@ Route::middleware('auth:sanctum')->post('/logout', [UtilisateurController::class
 
 
 
-
 Route::get('/destinations', [DestinationController::class, 'index']);
-Route::get('/destinations/{id}', [DestinationController::class, 'show']);
 Route::post('/destinations', [DestinationController::class, 'store']);
+Route::get('/destinations/{id}', [DestinationController::class, 'show']);
 Route::put('/destinations/{id}', [DestinationController::class, 'update']);
 Route::delete('/destinations/{id}', [DestinationController::class, 'destroy']);
 
+
+
+Route::get('regions/index', [RegionController::class, 'index']);
+Route::post('regions/store', [RegionController::class, 'store']);
+
+Route::get('regions/{region}', [RegionController::class, 'show']);
+Route::put('regions/{region}', [RegionController::class, 'update']);
+Route::delete('regions/{region}', [RegionController::class, 'destroy']);
+
+
+
+Route::get('types', [TypeController::class, 'index']);
+Route::post('types', [TypeController::class, 'store']);
+Route::get('types/{type}', [TypeController::class, 'show']);
+Route::put('types/{type}', [TypeController::class, 'update']);
+Route::delete('types/{type}', [TypeController::class, 'destroy']);
+
+
+
+
+Route::get('interets', [InteretController::class, 'index']);
+Route::post('interets', [InteretController::class, 'store']);
+Route::get('interets/{interet}', [InteretController::class, 'show']);
+Route::put('interets/{interet}', [InteretController::class, 'update']);
+Route::delete('interets/{interet}', [InteretController::class, 'destroy']);

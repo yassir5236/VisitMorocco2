@@ -17,5 +17,7 @@ class Type extends Model {
     public function destinations() {
         return $this->hasMany(Destination::class);
     }
+
+
 }
 

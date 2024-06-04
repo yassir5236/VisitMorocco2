@@ -14,6 +14,11 @@ class Interet extends Model {
         'nom',
         'description'
     ];
+
+    public function destinations()
+{
+    return $this->belongsToMany(Destination::class);
+}
 }
 
 

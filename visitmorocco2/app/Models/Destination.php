@@ -24,7 +24,12 @@ class Destination extends Model {
         return $this->belongsTo(Type::class);
     }
 
-    public function interet() {
-        return $this->belongsTo(Interet::class);
+    public function interets()
+    {
+        return $this->belongsToMany(Interet::class);
     }
+    
+
+
+
 }

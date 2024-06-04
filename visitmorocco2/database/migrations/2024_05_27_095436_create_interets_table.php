@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('interets', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

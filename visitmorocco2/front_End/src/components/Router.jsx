@@ -6,7 +6,7 @@ import NotFond from './pages/NotFond.jsx';
 
 const Router = createBrowserRouter([
 
-
+  
 
     {
         path: '/',
@@ -49,3 +49,9 @@ const Router = createBrowserRouter([
 
 
 export default Router
+
+
+
+
+
+
