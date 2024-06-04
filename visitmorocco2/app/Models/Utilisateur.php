@@ -12,6 +12,7 @@ class Utilisateur extends Authenticatable {
         'nomUtilisateur',
         'email',
         'motDePasse',
+        'role',
         'image'
 
     ];

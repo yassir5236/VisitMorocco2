@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -18,7 +15,7 @@ class UtilisateurController extends Controller
             'nomUtilisateur' => 'required|string|unique:utilisateurs',
             'email' => 'required|email|unique:utilisateurs',
             'motDePasse' => 'required|string|min:6',
-            'image' => 'nullable|image' // Validation de l'image
+            'image' => 'nullable|image'
         ]);
 
 
@@ -26,6 +23,7 @@ class UtilisateurController extends Controller
         $user->nomUtilisateur = $request->nomUtilisateur;
         $user->email = $request->email;
         $user->motDePasse = bcrypt($request->motDePasse);
+        $user->role = 'user';
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('imagesUsers', 'public');
 

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nomUtilisateur');
             $table->string('email')->unique();
             $table->string('motDePasse');
+            $table->string('role')->default('user'); 
+
             $table->string('image')->nullable();  
             $table->timestamps();
         });

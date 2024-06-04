@@ -1,6 +1,8 @@
 import Footer from '../../sections/Footer/Footer';
 import Header from '../../sections/Header/Header';
+import InteretList from '../../sections/Interets/InteretList';
 import ListRegion from '../../sections/Region/ListRegion';
+import ListTypes from '../../sections/Type/ListTypes';
 import './Dashboard.css';
 
 
@@ -12,6 +14,8 @@ const Dashboard = () => {
 
    
         <ListRegion />
+        <ListTypes />
+        <InteretList />
 
       <div className='flex ml-10'>
 
