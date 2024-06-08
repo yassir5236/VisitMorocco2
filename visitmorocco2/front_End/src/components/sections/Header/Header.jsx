@@ -176,7 +176,7 @@ function Header() {
                         </svg>
                       </button>
                       <div className={`hs-dropdown-menu transition-[opacity,margin] duration ${isDropdownOpen ? 'opacity-100' : 'opacity-0 hidden'} min-w-60 bg-white shadow-md rounded-lg p-2 mt-2`} aria-labelledby="hs-dropdown-default">
-                        <button onClick={Logout} className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">Logout</button>
+                        <button onClick={Logout} className="flex   items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">Logout</button>
                       </div>
                     </div>
                   </>
@@ -187,7 +187,7 @@ function Header() {
                     <Link to="/" className="text-white hover:text-gray-200">Home</Link>
                     <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link>
                     <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
-                    {/* <Link to="/AddRegionForm" className="text-white hover:text-gray-200">AddRegionForm</Link> */}
+                    <Link to="/DisplayDestination" className="text-white hover:text-gray-200">Destination</Link>
 
                     <div className="hs-dropdown relative inline-flex">
                       <button
@@ -211,7 +211,6 @@ function Header() {
                 return (
                   <>
                     <Link to="/" className="text-white hover:text-gray-200">Home</Link>
-                    <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link>
                     <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
                     <Link to="/Register" className="text-white hover:text-gray-200">Register</Link>
                     <Link to="/Login" className="text-white hover:text-gray-200">Login</Link>

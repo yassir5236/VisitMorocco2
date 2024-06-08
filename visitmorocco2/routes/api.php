@@ -36,11 +36,30 @@ Route::middleware('auth:sanctum')->post('/logout', [UtilisateurController::class
 
 
 
-Route::get('/destinations', [DestinationController::class, 'index']);
-Route::post('/destinations', [DestinationController::class, 'store']);
-Route::get('/destinations/{id}', [DestinationController::class, 'show']);
-Route::put('/destinations/{id}', [DestinationController::class, 'update']);
-Route::delete('/destinations/{id}', [DestinationController::class, 'destroy']);
+// Route::get('/destinations', [DestinationController::class, 'index']);
+// Route::post('/destinations', [DestinationController::class, 'store']);
+// Route::get('/destinations/{id}', [DestinationController::class, 'show']);
+// Route::put('/destinations/{id}', [DestinationController::class, 'update']);
+// Route::delete('/destinations/{id}', [DestinationController::class, 'destroy']);
+
+
+
+
+Route::get('destinations/index', [DestinationController::class, 'index'])->name('destinations.index');
+
+Route::get('destinations/create', [DestinationController::class, 'create'])->name('destinations.create');
+
+Route::post('destinations', [DestinationController::class, 'store'])->name('destinations.store');
+
+Route::get('destinations/{destination}', [DestinationController::class, 'show'])->name('destinations.show');
+
+Route::get('destinations/{destination}/edit', [DestinationController::class, 'edit'])->name('destinations.edit');
+
+Route::put('destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');
+
+Route::delete('destinations/{destination}', [DestinationController::class, 'destroy'])->name('destinations.destroy');
+
+Route::get('/destinations/search/Destination', [DestinationController::class, 'search']);
 
 
 

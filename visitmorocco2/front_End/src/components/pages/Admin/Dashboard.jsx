@@ -1,3 +1,7 @@
+import AddDestinationForm from '../../sections/Destination/AddDestinationForm';
+import ListDestinations from '../../sections/Destination/ListDestinations';
+import SearchDestinations from '../../sections/Destination/SearchDestinations';
+// import SimpleMap from '../../sections/Destination/SimpleMap';
 import Footer from '../../sections/Footer/Footer';
 import Header from '../../sections/Header/Header';
 import InteretList from '../../sections/Interets/InteretList';
@@ -12,10 +16,19 @@ const Dashboard = () => {
 
       <Header />
 
-   
-        <ListRegion />
-        <ListTypes />
-        <InteretList />
+
+      <ListRegion />
+      <ListTypes />
+      <InteretList />
+      <AddDestinationForm />
+      <ListDestinations />
+      <SearchDestinations />
+      
+
+
+      {/* <SimpleMap /> */}
+      
+      
 
       <div className='flex ml-10'>
 
@@ -102,7 +115,7 @@ const Dashboard = () => {
           </div>
         </div> */}
 
-        <div className='flex-col mt-10 ml-24'>
+        {/* <div className='flex-col mt-10 ml-24'>
 
           <div className="flex flex-col max-w-[935px]">
             <div className="flex gap-5 px-5 w-full text-xl font-semibold text-black max-md:flex-wrap max-md:max-w-full">
@@ -425,7 +438,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-        </div>
+        </div> */}
 
 
       </div>

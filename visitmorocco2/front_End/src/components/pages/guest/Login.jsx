@@ -34,7 +34,7 @@ const Login = () => {
 
       if (response.status === 200) {
         localStorage.setItem("user_info", JSON.stringify(result.user));
-        navigate("/AddDestination");
+        navigate("/Dashboard");
       } else {
         setErrorMessage(result.message);
       }
