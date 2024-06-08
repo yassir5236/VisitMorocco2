@@ -32,9 +32,30 @@ const Login = () => {
 
       let result = await response.json();
 
+      // if (response.status === 200 ) {
+
+      //   localStorage.setItem("user_info", JSON.stringify(result.user))
+      //   if(JSON.stringify(result.user.role)==='user'){
+      //     navigate("/Home");
+      //   }else{
+      //     navigate("/Dashboard");
+
+      //   }
+      // } else {
+      //   setErrorMessage(result.message);
+      // }
+
+
+
       if (response.status === 200) {
         localStorage.setItem("user_info", JSON.stringify(result.user));
-        navigate("/Dashboard");
+        const userRole = result.user.role;
+  
+        if (userRole === 'user') {
+          navigate("/");
+        } else {
+          navigate("/Dashboard");
+        }
       } else {
         setErrorMessage(result.message);
       }
@@ -44,25 +65,12 @@ const Login = () => {
     }
   };
 
-  // return (
-  //   <div>
-  //     <h1>Login</h1>
-  //     <input
-  //       type="email"
-  //       placeholder="Email"
-  //       value={email}
-  //       onChange={(e) => setEmail(e.target.value)}
-  //     />
-  //     <input
-  //       type="password"
-  //       placeholder="Mot de passe"
-  //       value={motDePasse}
-  //       onChange={(e) => setMotDePasse(e.target.value)}
-  //     />
-  //     <button onClick={handleLogin}>Login</button>
-  //     {errorMessage && <p>{errorMessage}</p>}
-  //   </div>
-  // );
+
+  
+
+
+
+
 
 
 
