@@ -36,30 +36,6 @@ class UtilisateurController extends Controller
 
 
 
-    // public function login(Request $request)
-    // {
-    //     // $request->validate([
-    //     //     'email' => 'required|email',
-    //     //     'motDePasse' => 'required|string',
-    //     // ]);
-
-    //     // if (Auth::attempt(['email' => $request->email, 'password' => $request->motDePasse])) {
-    //     //     $user = Auth::user();
-    //     //     $token = $user->createToken('Token d\'accès')->plainTextToken;
-    //     //     return response()->json(['token' => $token, 'user' => $user], 200);
-    //     // } else {
-    //     //     return response()->json(['message' => 'Les informations d\'identification sont incorrectes'], 401);
-    //     // }
-
-    //     $user = Utilisateur::where('email', $request->email)->first();
-    //         if(!$user || !Hash::check($request->motDePasse,$user->motDePasse)){
-    //             return ["error" =>"Email or password is not matched"];
-    //         }
-
-
-    //     return $user;
-    // }
-
     public function login(Request $request)
     {
         $request->validate([

@@ -1,3 +1,7 @@
+import ActivityList from '../../sections/Activities/ActivityList';
+import AddActivity from '../../sections/Activities/AddActivity';
+// import BookActivity from '../../sections/Activities/BookActivity';
+// import SearchActivities from '../../sections/Activities/SearchActivities';
 import AddDestinationForm from '../../sections/Destination/AddDestinationForm';
 import ListDestinations from '../../sections/Destination/ListDestinations';
 import SearchDestinations from '../../sections/Destination/SearchDestinations';
@@ -23,6 +27,11 @@ const Dashboard = () => {
       <AddDestinationForm />
       <ListDestinations />
       <SearchDestinations />
+      {/* <BookActivity/>
+      <SearchActivities/> */}
+       <AddActivity/>
+      <ActivityList/>
+     
       
 
 

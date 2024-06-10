@@ -7,6 +7,10 @@ use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\InteretController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ReservationController;
+
+
 
 
 
@@ -46,19 +50,12 @@ Route::middleware('auth:sanctum')->post('/logout', [UtilisateurController::class
 
 
 Route::get('destinations/index', [DestinationController::class, 'index'])->name('destinations.index');
-
 Route::get('destinations/create', [DestinationController::class, 'create'])->name('destinations.create');
-
 Route::post('destinations', [DestinationController::class, 'store'])->name('destinations.store');
-
 Route::get('destinations/{destination}', [DestinationController::class, 'show'])->name('destinations.show');
-
 Route::get('destinations/{destination}/edit', [DestinationController::class, 'edit'])->name('destinations.edit');
-
-Route::put('destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');
-
+Route::put('destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');    
 Route::delete('destinations/{destination}', [DestinationController::class, 'destroy'])->name('destinations.destroy');
-
 Route::get('/destinations/search/Destination', [DestinationController::class, 'search']);
 
 
@@ -86,3 +83,29 @@ Route::post('interets', [InteretController::class, 'store']);
 Route::get('interets/{interet}', [InteretController::class, 'show']);
 Route::put('interets/{interet}', [InteretController::class, 'update']);
 Route::delete('interets/{interet}', [InteretController::class, 'destroy']);
+
+
+
+
+
+Route::get('/activities', [ActivityController::class, 'index']);
+Route::post('/activities/store', [ActivityController::class, 'store']);
+// Route::get('/activities/{activity}', [ActivityController::class, 'show']);
+// Route::put('/activities/{activity}', [ActivityController::class, 'update']);
+// Route::delete('/activities/{activity}', [ActivityController::class, 'destroy']);
+// Route::get('/activities/search', [ActivityController::class, 'search']);
+
+
+
+
+// Route::middleware('auth:sanctum')->group(function () {
+    // Route::post('/reservations/store', [ReservationController::class, 'store']);
+    // Route::post('/api/reservations/store', [ReservationController::class, 'store']);
+    Route::post('/reservations/store', [ReservationController::class, 'store']);
+
+    Route::get('/reservations', [ReservationController::class, 'index']);
+    Route::put('/reservations/{reservation}/accept', [ReservationController::class, 'accept']);
+    Route::put('/reservations/{reservation}/reject', [ReservationController::class, 'reject']);
+// });
+
+

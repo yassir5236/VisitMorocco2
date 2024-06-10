@@ -169,13 +169,13 @@ const SearchDestinations = () => {
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg m-10">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Search Destinations</h1>
-            <div className="mb-6">
+            <div className="mb-6 ">
                 <input
                     type="text"
                     value={searchTerm}
                     onChange={handleChange}
                     placeholder="Search by region, type, or interest"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    className="mt-1 block w-full rounded-md p-2 border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 />
             </div>
             <div className=''>
