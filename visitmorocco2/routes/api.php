@@ -88,12 +88,15 @@ Route::delete('interets/{interet}', [InteretController::class, 'destroy']);
 
 
 
+
+
 Route::get('/activities', [ActivityController::class, 'index']);
 Route::post('/activities/store', [ActivityController::class, 'store']);
-// Route::get('/activities/{activity}', [ActivityController::class, 'show']);
-// Route::put('/activities/{activity}', [ActivityController::class, 'update']);
-// Route::delete('/activities/{activity}', [ActivityController::class, 'destroy']);
+Route::get('/activities/{id}', [ActivityController::class, 'show']);
+Route::put('/activities/{id}', [ActivityController::class, 'update']);
+Route::delete('/activities/{id}', [ActivityController::class, 'destroy']);
 // Route::get('/activities/search', [ActivityController::class, 'search']);
+
 
 
 
@@ -107,5 +110,8 @@ Route::post('/activities/store', [ActivityController::class, 'store']);
     Route::put('/reservations/{reservation}/accept', [ReservationController::class, 'accept']);
     Route::put('/reservations/{reservation}/reject', [ReservationController::class, 'reject']);
 // });
+
+
+
 
 
