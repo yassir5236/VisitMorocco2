@@ -29,7 +29,7 @@ const Dashboard = () => {
       <SearchDestinations />
       {/* <BookActivity/>
       <SearchActivities/> */}
-       <AddActivity/>
+       {/* <AddActivity/> */}
       <ActivityList/>
      
       

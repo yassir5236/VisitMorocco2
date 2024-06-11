@@ -23,7 +23,7 @@ const Register = () => {
   
   useEffect(()=>{
     if (localStorage.getItem("user_info")){
-        navigate("/AddDestination")
+        navigate("/")
     }
   },[])
 

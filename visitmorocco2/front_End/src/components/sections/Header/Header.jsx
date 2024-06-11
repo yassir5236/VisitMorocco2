@@ -18,9 +18,7 @@ function Header() {
     navigate("/login")
   }
 
-  // State to manage the visibility of the mobile menu
   const [isOpen, setIsOpen] = useState(false);
-  // State to manage the visibility of the dropdown menu
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
@@ -185,9 +183,11 @@ function Header() {
                 return (
                   <>
                     <Link to="/" className="text-white hover:text-gray-200">Home</Link>
-                    <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link>
+                    {/* <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link> */}
                     <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
                     <Link to="/DisplayDestination" className="text-white hover:text-gray-200">Destination</Link>
+                    <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
+
 
                     <div className="hs-dropdown relative inline-flex">
                       <button

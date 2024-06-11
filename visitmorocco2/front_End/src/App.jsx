@@ -12,6 +12,8 @@ import NotFond from './components/pages/NotFond.jsx';
 import Add from './components/sections/Destination/Add.jsx';
 import Dashboard from './components/pages/Admin/Dashboard.jsx';
 import DisplayDestination from './components/pages/user/DisplayDestination.jsx';
+// import ActivityList from './components/sections/Activities/ActivityList.jsx';
+import DisplayActivity from './components/pages/user/DisplayActivity.jsx';
 // import AddRegionForm from './components/pages/Admin/AddRegionForm.jsx';
 
 // import Protected from './components/Protected.jsx';
@@ -27,6 +29,9 @@ const App = () => {
 
           <Route path='/' element={<Home />} />
           <Route path='/DisplayDestination' element={<DisplayDestination />} />
+          <Route path='/DisplayActivity' element={<DisplayActivity />} />
+
+          
           {/* <Route path='/ListRegion' element={<ListRegion />} /> */}
 
 
