@@ -15,10 +15,10 @@ class Category extends Model
 
 
 
-    // public function conseils()
-    // {
-    //     return $this->hasMany(Conseil::class);
-    // }
+    public function Articles()
+    {
+        return $this->hasMany(Conseil::class);
+    }
 }
 
 

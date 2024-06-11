@@ -1,7 +1,14 @@
+
+
+
+
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-const AddArticleForm = ({ onSuccess }) => {
+
+const AddConseilForm = ({ onSuccess }) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [category_id, setCategoryId] = useState('');
@@ -9,6 +16,7 @@ const AddArticleForm = ({ onSuccess }) => {
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
     const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -41,19 +49,20 @@ const AddArticleForm = ({ onSuccess }) => {
             });
 
             if (response.status === 201) {
-                setSuccessMessage('Article ajouté avec succès !');
+                setSuccessMessage('Conseil ajouté avec succès !');
                 setTitle('');
                 setContent('');
                 setCategoryId('');
                 setImage(null);
                 onSuccess(response.data);
+                navigate('/Dashboard');
             }
         } catch (error) {
-            console.error('Erreur lors de l\'ajout de l\'article:', error);
+            console.error('Erreur lors de l\'ajout du conseil:', error);
             if (error.response && error.response.data) {
-                setErrors(error.response.data.errors);
+                // setErrors(error.response.data.errors);
             } else {
-                setErrors({ api: "Une erreur s'est produite lors de l'ajout de l'article." });
+                // setErrors({ api: "Une erreur s'est produite lors de l'ajout du conseil." });
             }
         }
     };
@@ -65,7 +74,7 @@ const AddArticleForm = ({ onSuccess }) => {
                 <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div className="max-w-md mx-auto">
                         <div>
-                            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-8">Ajouter un Article</h1>
+                            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-8">Ajouter un Conseil</h1>
                         </div>
                         {successMessage && (
                             <div className="bg-green-50 border-l-4 border-green-400 text-green-700 p-4 rounded mb-6">
@@ -79,7 +88,7 @@ const AddArticleForm = ({ onSuccess }) => {
                         )}
                         <form onSubmit={handleSubmit}>
                             <div className="mb-6">
-                                <label className="block text-gray-700 font-medium mb-2">Titre de larticle</label>
+                                <label className="block text-gray-700 font-medium mb-2">Titre du conseil</label>
                                 <input
                                     type="text"
                                     name="title"
@@ -137,4 +146,8 @@ const AddArticleForm = ({ onSuccess }) => {
     );
 };
 
-export default AddArticleForm;
+export default AddConseilForm;
+
+
+
+

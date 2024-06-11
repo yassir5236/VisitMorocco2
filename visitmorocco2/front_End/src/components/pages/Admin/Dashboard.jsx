@@ -1,5 +1,7 @@
 import ActivityList from '../../sections/Activities/ActivityList';
-import AddArticleForm from '../../sections/Articles/AddArticle';
+import AddConseilForm from '../../sections/Articles/AddConseilForm';
+import AddArticleForm from '../../sections/Articles/AddConseilForm';
+import ListArticles from '../../sections/Articles/ArticleList';
 import ArticleList from '../../sections/Articles/ArticleList';
 // import AddActivity from '../../sections/Activities/AddActivity';
 import CategoryList from '../../sections/CategoryConseil/CategoryList';
@@ -36,7 +38,9 @@ const Dashboard = () => {
       <ActivityList/>
       <CategoryList/>
 
-      <AddArticleForm/>
+      <AddConseilForm/>
+      <ListArticles/>
+
      
       
 
