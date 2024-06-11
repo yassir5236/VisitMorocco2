@@ -1,5 +1,8 @@
 import ActivityList from '../../sections/Activities/ActivityList';
-import AddActivity from '../../sections/Activities/AddActivity';
+import AddArticleForm from '../../sections/Articles/AddArticle';
+import ArticleList from '../../sections/Articles/ArticleList';
+// import AddActivity from '../../sections/Activities/AddActivity';
+import CategoryList from '../../sections/CategoryConseil/CategoryList';
 // import BookActivity from '../../sections/Activities/BookActivity';
 // import SearchActivities from '../../sections/Activities/SearchActivities';
 import AddDestinationForm from '../../sections/Destination/AddDestinationForm';
@@ -24,13 +27,16 @@ const Dashboard = () => {
       <ListRegion />
       <ListTypes />
       <InteretList />
-      <AddDestinationForm />
+      {/* <AddDestinationForm /> */}
       <ListDestinations />
-      <SearchDestinations />
+      {/* <SearchDestinations /> */}
       {/* <BookActivity/>
       <SearchActivities/> */}
        {/* <AddActivity/> */}
       <ActivityList/>
+      <CategoryList/>
+
+      <AddArticleForm/>
      
       
 

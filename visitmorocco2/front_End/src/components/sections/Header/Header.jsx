@@ -151,13 +151,13 @@ function Header() {
         <div className="hidden md:flex space-x-6">
           {
             (() => {
-              const userInfo = JSON.parse(localStorage.getItem('user_info'));  
+              const userInfo = JSON.parse(localStorage.getItem('user_info'));
               if (userInfo && userInfo.role === 'admin') {
                 return (
                   <>
                     <Link to="/Dashboard" className="text-white hover:text-gray-200">Dashboard</Link>
                     <Link to="/" className="text-white hover:text-gray-200">Home</Link>
-                    <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link>
+                    {/* <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link> */}
                     <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
                     {/* <Link to="/AddRegionForm" className="text-white hover:text-gray-200">AddRegionForm</Link> */}
 
@@ -179,7 +179,7 @@ function Header() {
                     </div>
                   </>
                 );
-              }else if (userInfo && userInfo.role === 'user') {
+              } else if (userInfo && userInfo.role === 'user') {
                 return (
                   <>
                     <Link to="/" className="text-white hover:text-gray-200">Home</Link>

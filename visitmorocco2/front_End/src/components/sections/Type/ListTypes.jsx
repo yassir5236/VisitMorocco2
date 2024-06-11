@@ -197,7 +197,7 @@ const ListTypes = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto p-6 m-10 rounded-md border-2 border-gray-400">
-            <div id='typeTitle' className="text-4xl text-center w-full bg-gray-400 text-white mb-12">Liste des Types de Destination</div>
+            <div id='typeTitle' className="text-4xl text-center w-full bg-gray-400 text-white mb-12">Manage  Types de Destination</div>
             <button
                 onClick={() => setShowAddForm(true)}
             >

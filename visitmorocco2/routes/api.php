@@ -9,6 +9,10 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\InteretController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
+
+
 
 
 
@@ -54,7 +58,7 @@ Route::get('destinations/create', [DestinationController::class, 'create'])->nam
 Route::post('destinations', [DestinationController::class, 'store'])->name('destinations.store');
 Route::get('destinations/{destination}', [DestinationController::class, 'show'])->name('destinations.show');
 Route::get('destinations/{destination}/edit', [DestinationController::class, 'edit'])->name('destinations.edit');
-Route::put('destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');    
+Route::put('destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');
 Route::delete('destinations/{destination}', [DestinationController::class, 'destroy'])->name('destinations.destroy');
 Route::get('/destinations/search/Destination', [DestinationController::class, 'search']);
 
@@ -102,16 +106,29 @@ Route::delete('/activities/{id}', [ActivityController::class, 'destroy']);
 
 
 // Route::middleware('auth:sanctum')->group(function () {
-    // Route::post('/reservations/store', [ReservationController::class, 'store']);
-    // Route::post('/api/reservations/store', [ReservationController::class, 'store']);
-    Route::post('/reservations/store', [ReservationController::class, 'store']);
+// Route::post('/reservations/store', [ReservationController::class, 'store']);
+// Route::post('/api/reservations/store', [ReservationController::class, 'store']);
+Route::post('/reservations/store', [ReservationController::class, 'store']);
 
-    Route::get('/reservations', [ReservationController::class, 'index']);
-    Route::put('/reservations/{reservation}/accept', [ReservationController::class, 'accept']);
-    Route::put('/reservations/{reservation}/reject', [ReservationController::class, 'reject']);
+Route::get('/reservations', [ReservationController::class, 'index']);
+Route::put('/reservations/{reservation}/accept', [ReservationController::class, 'accept']);
+Route::put('/reservations/{reservation}/reject', [ReservationController::class, 'reject']);
 // });
 
 
 
 
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/categories', [CategoryController::class, 'store']);
+Route::get('/categories/{id}', [CategoryController::class, 'show']);
+Route::put('/categories/{id}', [CategoryController::class, 'update']);
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
 
+
+
+
+Route::get('/articles', [ArticleController::class, 'index']);
+Route::post('/articles/store', [ArticleController::class, 'store']);
+Route::get('/articles/{article}', [ArticleController::class, 'show']);
+Route::put('/articles/{article}', [ArticleController::class, 'update']);
+Route::delete('/articles/{article}', [ArticleController::class, 'destroy']);

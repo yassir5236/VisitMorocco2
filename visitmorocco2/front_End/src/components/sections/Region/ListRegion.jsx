@@ -75,7 +75,7 @@ const ListRegion = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto p-6 m-10 rounded-md border-2 border-gray-400">
-            <div id='regionTitle' className="text-4xl text-center w-full bg-gray-400 text-white mb-12">Liste des Régions</div>
+            <div id='regionTitle' className="text-4xl text-center w-full bg-gray-400 text-white mb-12">Manage Régions</div>
             {showAddForm && <AddRegionForm onSuccess={addNewRegion} />}
             <button onClick={() => setShowAddForm(!showAddForm)} >
                 <GrAdd size={'2em'} color='red' />
