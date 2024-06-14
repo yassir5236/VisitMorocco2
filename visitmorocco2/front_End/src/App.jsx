@@ -18,6 +18,11 @@ import DisplayActivity from './components/pages/user/DisplayActivity.jsx';
 
 // import Protected from './components/Protected.jsx';
 // import Destination from './components/sections/Destination/Destination.jsx';
+// import ListArticles from '../../sections/Articles/ArticleList';
+
+import ListArticles from './components/sections/Articles/ArticleList';
+import AddConseilForm from './components/sections/Articles/AddConseilForm.jsx';
+
 
 const App = () => {
   return (
@@ -39,6 +44,11 @@ const App = () => {
           <Route path='/Destinations' element={<h1>Destination</h1>} />
         
           <Route path='/AddDestination' element={<Add />} />
+          <Route path='/Articles' element={<ListArticles />} />
+          <Route path='/AddConseilForm' element={<AddConseilForm />} />
+
+          
+
 
 
 

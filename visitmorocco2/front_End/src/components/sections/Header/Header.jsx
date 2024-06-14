@@ -157,8 +157,11 @@ function Header() {
                   <>
                     <Link to="/Dashboard" className="text-white hover:text-gray-200">Dashboard</Link>
                     <Link to="/" className="text-white hover:text-gray-200">Home</Link>
-                    {/* <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link> */}
-                    <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
+
+                    <Link to="/Articles" className="text-white hover:text-gray-200">Conseil</Link>
+                    {/* <Link to="/About" className="text-white hover:text-gray-200">About Us</Link> */}
+                    <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
+
                     {/* <Link to="/AddRegionForm" className="text-white hover:text-gray-200">AddRegionForm</Link> */}
 
                     <div className="hs-dropdown relative inline-flex">
@@ -187,6 +190,8 @@ function Header() {
                     <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
                     <Link to="/DisplayDestination" className="text-white hover:text-gray-200">Destination</Link>
                     <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
+                    <Link to="/Articles" className="text-white hover:text-gray-200">Conseil</Link>
+
 
 
                     <div className="hs-dropdown relative inline-flex">

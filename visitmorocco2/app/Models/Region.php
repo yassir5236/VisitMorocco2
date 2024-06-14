@@ -12,10 +12,26 @@ class Region extends Model
     protected $fillable = [
         'nom',
         'description',
+        'image',
     ];
 
     public function destinations()
     {
         return $this->hasMany(Destination::class);
+    }
+
+    public function itineraries()
+    {
+        return $this->hasMany(Itinerary::class);
+    }
+
+    public function accommodations()
+    {
+        return $this->hasMany(Accommodation::class);
+    }
+
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class);
     }
 }

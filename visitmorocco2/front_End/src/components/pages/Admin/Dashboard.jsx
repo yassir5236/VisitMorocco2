@@ -16,6 +16,9 @@ import Header from '../../sections/Header/Header';
 import InteretList from '../../sections/Interets/InteretList';
 import ListRegion from '../../sections/Region/ListRegion';
 import ListTypes from '../../sections/Type/ListTypes';
+import Guide from '../../sections/GuideVoyage/Guide';
+import RegionSearch from '../../sections/GuideVoyage/RegionSearch';
+
 import './Dashboard.css';
 
 
@@ -25,21 +28,44 @@ const Dashboard = () => {
 
       <Header />
 
+      {/* <Guide/> */}
+      <RegionSearch/>
 
       <ListRegion />
+
+
+      
+
+
+
+
+
+
+{/*       
       <ListTypes />
       <InteretList />
+      <CategoryList/>
+
+      <ListDestinations /> */}
+
+
+
+
+
+
+
+
+
       {/* <AddDestinationForm /> */}
-      <ListDestinations />
+
       {/* <SearchDestinations /> */}
       {/* <BookActivity/>
       <SearchActivities/> */}
        {/* <AddActivity/> */}
-      <ActivityList/>
-      <CategoryList/>
+      {/* <ActivityList/> */}
 
-      <AddConseilForm/>
-      <ListArticles/>
+      {/* <AddConseilForm/> */}
+      {/* <ListArticles/> */}
 
      
       

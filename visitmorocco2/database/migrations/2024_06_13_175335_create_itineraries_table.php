@@ -9,14 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create('itineraries', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->foreignId('region_id')->constrained()->onDelete('cascade');
+            $table->string('title');
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
-
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('regions');
+        Schema::dropIfExists('itineraries');
     }
 };

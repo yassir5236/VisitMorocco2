@@ -11,6 +11,9 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ItineraryController;
+use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\RestaurantController;
 
 
 
@@ -70,6 +73,7 @@ Route::post('regions/store', [RegionController::class, 'store']);
 Route::get('regions/{region}', [RegionController::class, 'show']);
 Route::put('regions/{region}', [RegionController::class, 'update']);
 Route::delete('regions/{region}', [RegionController::class, 'destroy']);
+Route::get('regionss/search', [RegionController::class, 'search']);
 
 
 
@@ -132,3 +136,73 @@ Route::post('/articles/store', [ArticleController::class, 'store']);
 Route::get('/articles/{article}', [ArticleController::class, 'show']);
 Route::put('/articles/{article}', [ArticleController::class, 'update']);
 Route::delete('/articles/{article}', [ArticleController::class, 'destroy']);
+
+
+
+
+
+
+// Route::get('regions', [RegionController::class, 'index']);
+// Route::get('regions/{region}', [RegionController::class, 'show']);
+// Route::put('regions/{region}', [RegionController::class, 'update']);
+// Route::delete('regions/{region}', [RegionController::class, 'destroy']);
+
+// Route::get('regions/{region}/itineraries ', [ItineraryController::class, 'index']);
+// Route::post('regions/{region}/itineraries', [ItineraryController::class, 'store']);
+// Route::get('regions/{region}/itineraries/{itinerary}', [ItineraryController::class, 'show']);
+// Route::put('regions/{region}/itineraries/{itinerary}', [ItineraryController::class, 'update']);
+// Route::delete('regions/{region}/itineraries/{itinerary}', [ItineraryController::class, 'destroy']);
+
+// Route::get('regions/{region}/accommodations', [AccommodationController::class, 'index']);
+// Route::post('regions/{region}/accommodations', [AccommodationController::class, 'store']);
+// Route::get('regions/{region}/accommodations/{accommodation}', [AccommodationController::class, 'show']);
+// Route::put('regions/{region}/accommodations/{accommodation}', [AccommodationController::class, 'update']);
+// Route::delete('regions/{region}/accommodations/{accommodation}', [AccommodationController::class, 'destroy']);
+
+// Route::get('regions/{region}/restaurants', [RestaurantController::class, 'index']);
+// Route::post('regions/{region}/restaurants', [RestaurantController::class, 'store']);
+// Route::get('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'show']);
+// Route::put('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'update']);
+// Route::delete('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'destroy']);
+// Route::get('regions/search', [RegionController::class, 'search']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('regions', [RegionController::class, 'index']);
+Route::post('regions/store', [RegionController::class, 'store']);
+Route::get('regions/{region}', [RegionController::class, 'show']);
+Route::put('regions/{region}', [RegionController::class, 'update']);
+Route::delete('regions/{region}', [RegionController::class, 'destroy']);
+Route::get('regions/search', [RegionController::class, 'search']);
+
+Route::get('regions/{region}/itineraries', [ItineraryController::class, 'index']);
+Route::post('regions/{region}/itineraries', [ItineraryController::class, 'store']);
+Route::get('regions/{region}/itineraries/{itinerary}', [ItineraryController::class, 'show']);
+Route::put('regions/{region}/itineraries/{itinerary}', [ItineraryController::class, 'update']);
+Route::delete('regions/{region}/itineraries/{itinerary}', [ItineraryController::class, 'destroy']);
+
+Route::get('regions/{region}/accommodations', [AccommodationController::class, 'index']);
+Route::post('regions/{region}/accommodations', [AccommodationController::class, 'store']);
+Route::get('regions/{region}/accommodations/{accommodation}', [AccommodationController::class, 'show']);
+Route::put('regions/{region}/accommodations/{accommodation}', [AccommodationController::class, 'update']);
+Route::delete('regions/{region}/accommodations/{accommodation}', [AccommodationController::class, 'destroy']);
+
+Route::get('regions/{region}/restaurants', [RestaurantController::class, 'index']);
+Route::post('regions/{region}/restaurants', [RestaurantController::class, 'store']);
+Route::get('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'show']);
+Route::put('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'update']);
+Route::delete('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'destroy']);

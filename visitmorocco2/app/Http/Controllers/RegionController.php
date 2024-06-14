@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Region;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\Validator;
 
 class RegionController extends Controller
@@ -14,25 +17,40 @@ class RegionController extends Controller
         return response()->json($regions, 200);
     }
 
-    // Créer une nouvelle région
+
+
+
     public function store(Request $request)
     {
-        // Valider les données de la requête
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+        } else {
+            $imagePath = null;
         }
 
-        // Créer et sauvegarder la région
-        $region = Region::create($request->all());
-        return response()->json($region, 201);
+        //   return 'hello';
+
+        Region::create([
+            'nom' => $request->nom,
+            'description' => $request->description,
+            'image' => $imagePath,
+        ]);
+
+        return response()->json(['message' => 'Region created successfully.']);
     }
 
-    
+
+
+
+
+
 
     // Afficher une région spécifique
     public function show($id)
@@ -46,31 +64,62 @@ class RegionController extends Controller
         return response()->json($region, 200);
     }
 
-    // Mettre à jour une région spécifique
-    public function update(Request $request, $id)
+
+
+
+
+
+    // public function update(Request $request, $id)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'nom' => 'required|string|max:255',
+    //         'description' => 'nullable|string',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return response()->json($validator->errors(), 400);
+    //     }
+
+    //     $region = Region::find($id);
+
+    //     if (is_null($region)) {
+    //         return response()->json(['message' => 'Region not found'], 404);
+    //     }
+
+    //     $region->update($request->all());
+    //     return response()->json($region, 200);
+    // }
+
+
+
+    public function update(Request $request, Region $region)
     {
-        // Valider les données de la requête
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+        if ($request->hasFile('image')) {
+          
+            $imagePath = $request->file('image')->store('images', 'public');
+        } else {
+            $imagePath = $region->image;
         }
 
-        $region = Region::find($id);
 
-        if (is_null($region)) {
-            return response()->json(['message' => 'Region not found'], 404);
-        }
 
-        // Mettre à jour les informations de la région
-        $region->update($request->all());
-        return response()->json($region, 200);
+        $region->update([
+            'nom' => $request->name,
+            'description' => $request->description,
+            'image' => $imagePath,
+        ]);
+
+        return response()->json(['message' => 'Region updated successfully.']);
     }
 
-    // Supprimer une région spécifique
+
+
     public function destroy($id)
     {
         $region = Region::find($id);
@@ -82,4 +131,55 @@ class RegionController extends Controller
         $region->delete();
         return response()->json(['message' => 'Region deleted successfully'], 200);
     }
+
+
+
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
+    //     $regions = Region::where('nom', 'LIKE', "%{$query}%")->get();
+
+    //     return response()->json($regions);
+    // }
+
+
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     if (empty($query)) {
+    //         $regions = Region::all(); // Récupère toutes les régions si la requête est vide
+    //     } else {
+    //         $regions = Region::where('nom', 'LIKE', "%{$query}%")->get();
+    //     }
+
+    //     return response()->json($regions);
+    // }
+
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if (empty($query)) {
+            // Fetch all regions along with their guides
+            $regions = Region::with(['itineraries', 'accommodations', 'restaurants'])->get();
+        } else {
+            // Fetch regions based on search query along with their guides
+            $regions = Region::where('nom', 'LIKE', "%{$query}%")
+                ->with(['itineraries', 'accommodations', 'restaurants'])
+                ->get();
+        }
+
+        return response()->json($regions);
+    }
+
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     $regions = Region::where('nom', 'like', '%'.$query.'%')->get();
+
+    //     return response()->json($regions);
+    // }
 }
