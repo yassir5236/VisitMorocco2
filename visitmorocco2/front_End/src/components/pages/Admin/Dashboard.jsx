@@ -3,7 +3,7 @@ import AddConseilForm from '../../sections/Articles/AddConseilForm';
 import AddArticleForm from '../../sections/Articles/AddConseilForm';
 import ListArticles from '../../sections/Articles/ArticleList';
 import ArticleList from '../../sections/Articles/ArticleList';
-// import AddActivity from '../../sections/Activities/AddActivity';
+import AddActivity from '../../sections/Activities/AddActivity';
 import CategoryList from '../../sections/CategoryConseil/CategoryList';
 // import BookActivity from '../../sections/Activities/BookActivity';
 // import SearchActivities from '../../sections/Activities/SearchActivities';
@@ -29,9 +29,9 @@ const Dashboard = () => {
       <Header />
 
       {/* <Guide/> */}
-      <RegionSearch/>
+      {/* <RegionSearch/> */}
 
-      <ListRegion />
+      {/* <ListRegion /> */}
 
 
       
@@ -44,11 +44,9 @@ const Dashboard = () => {
 {/*       
       <ListTypes />
       <InteretList />
-      <CategoryList/>
+      <CategoryList/>*/}
 
-      <ListDestinations /> */}
-
-
+      <ListDestinations /> 
 
 
 
@@ -56,9 +54,11 @@ const Dashboard = () => {
 
 
 
-      {/* <AddDestinationForm /> */}
 
-      {/* <SearchDestinations /> */}
+
+       <AddDestinationForm /> 
+
+      <SearchDestinations />
       {/* <BookActivity/>
       <SearchActivities/> */}
        {/* <AddActivity/> */}

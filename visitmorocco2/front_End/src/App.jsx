@@ -22,6 +22,8 @@ import DisplayActivity from './components/pages/user/DisplayActivity.jsx';
 
 import ListArticles from './components/sections/Articles/ArticleList';
 import AddConseilForm from './components/sections/Articles/AddConseilForm.jsx';
+import SearchDestinations from './components/sections/Destination/SearchDestinations.jsx';
+import DestinationDetails from './components/sections/Destination/DestinationDetails.jsx';
 
 
 const App = () => {
@@ -36,28 +38,33 @@ const App = () => {
           <Route path='/DisplayDestination' element={<DisplayDestination />} />
           <Route path='/DisplayActivity' element={<DisplayActivity />} />
 
-          
+
           {/* <Route path='/ListRegion' element={<ListRegion />} /> */}
 
 
-          
+
           <Route path='/Destinations' element={<h1>Destination</h1>} />
-        
+
           <Route path='/AddDestination' element={<Add />} />
           <Route path='/Articles' element={<ListArticles />} />
           <Route path='/AddConseilForm' element={<AddConseilForm />} />
 
+          <Route path="/" exact  element={<SearchDestinations /> }/>
           
+          <Route path="/destination/:id"  element={<DestinationDetails />}  />
+         
+
+
 
 
 
 
           <Route path='/About' element={<h1>About</h1>} />
-          <Route path='/Contact' element={<h1>Contact</h1>}  />
+          <Route path='/Contact' element={<h1>Contact</h1>} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register />} />
           <Route path='/' element={<NotFond />} />
-          <Route path='/Dashboard' element={<Dashboard/>} />
+          <Route path='/Dashboard' element={<Dashboard />} />
 
 
 

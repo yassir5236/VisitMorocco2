@@ -14,11 +14,17 @@ class DestinationController extends Controller
 {
 
 
+    // public function index()
+    // {
+    //     $destinations = Destination::all();
+    //     return response()->json($destinations);
+    // }
+
     public function index()
-    {
-        $destinations = Destination::all();
-        return response()->json($destinations);
-    }
+{
+    $destinations = Destination::with('images')->get();
+    return response()->json($destinations);
+}
 
     public function create()
     {
@@ -39,7 +45,7 @@ class DestinationController extends Controller
                 'interet_id' => 'nullable|exists:interets,id',
                 'latitude' => 'required|numeric',
                 'longitude' => 'required|numeric',
-                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
 
             $destination = Destination::create($request->all());
@@ -87,8 +93,19 @@ class DestinationController extends Controller
 
 
 
+    // public function show(Destination $destination)
+
+    // {
+
+    //     return response()->json($destination);
+    // }
+
+
     public function show(Destination $destination)
     {
+        // Eager load images relationship
+        $destination = $destination->load('images');
+
         return response()->json($destination);
     }
 
@@ -108,46 +125,58 @@ class DestinationController extends Controller
 
 
 
+    // public function search(Request $request)
+    // {
+    //     $query = Destination::query();
+  
+    
+    //     if ($request->has('search')) {
+    //         $searchTerm = $request->input('search');
+    //         $query->where(function ($q) use ($searchTerm) {
+    //             $q->whereHas('region', function ($query) use ($searchTerm) {
+    //                 $query->where('nom', 'LIKE', "%{$searchTerm}%");
+    //             })
+    //             ->orWhereHas('type', function ($query) use ($searchTerm) {
+    //                 $query->where('nom', 'LIKE', "%{$searchTerm}%");
+    //             })
+    //             ->orWhereHas('interet', function ($query) use ($searchTerm) {
+    //                 $query->where('nom', 'LIKE', "%{$searchTerm}%");
+    //             });
+    //         });
+    //     }
+    
+    //     $destinations = $query->get();
+    
+    //     return response()->json($destinations);
+    // }
+
+
+
     public function search(Request $request)
-    {
-        $query = Destination::query();
-    
-        if ($request->has('search')) {
-            $searchTerm = $request->input('search');
-            $query->where(function ($q) use ($searchTerm) {
-                $q->whereHas('region', function ($query) use ($searchTerm) {
-                    $query->where('nom', 'LIKE', "%{$searchTerm}%");
-                })
-                ->orWhereHas('type', function ($query) use ($searchTerm) {
-                    $query->where('nom', 'LIKE', "%{$searchTerm}%");
-                })
-                ->orWhereHas('interet', function ($query) use ($searchTerm) {
-                    $query->where('nom', 'LIKE', "%{$searchTerm}%");
-                });
+{
+    $query = Destination::query();
+
+    if ($request->has('search')) {
+        $searchTerm = $request->input('search');
+        $query->where(function ($q) use ($searchTerm) {
+            $q->whereHas('region', function ($query) use ($searchTerm) {
+                $query->where('nom', 'LIKE', "%{$searchTerm}%");
+            })
+            ->orWhereHas('type', function ($query) use ($searchTerm) {
+                $query->where('nom', 'LIKE', "%{$searchTerm}%");
+            })
+            ->orWhereHas('interet', function ($query) use ($searchTerm) {
+                $query->where('nom', 'LIKE', "%{$searchTerm}%");
             });
-        }
-    
-        $destinations = $query->get();
-    
-        return response()->json($destinations);
+        });
     }
 
+    // Eager load the 'images' relationship
+    $destinations = $query->with('images')->get();
 
-//     public function search(Request $request)
-// {
-//     $query = Destination::query();
+    return response()->json($destinations);
+}
 
-//     if ($request->has('region')) {
-//         $searchTerm = $request->input('region');
-//         $query->whereHas('region', function ($query) use ($searchTerm) {
-//             $query->where('nom', 'LIKE', "%{$searchTerm}%");
-//         });
-//     }
-
-//     $destinations = $query->get();
-
-//     return response()->json($destinations);
-// }
 
     
     
