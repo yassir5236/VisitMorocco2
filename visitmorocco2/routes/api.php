@@ -15,6 +15,10 @@ use App\Http\Controllers\ItineraryController;
 use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\RestaurantController;
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+
 
 
 
@@ -206,3 +210,22 @@ Route::post('regions/{region}/restaurants', [RestaurantController::class, 'store
 Route::get('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'show']);
 Route::put('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'update']);
 Route::delete('regions/{region}/restaurants/{restaurant}', [RestaurantController::class, 'destroy']);
+
+
+
+
+
+
+
+// Route::middleware('auth:sanctum')->group(function () {
+    Route::get('posts/index', [PostController::class, 'index']);
+    Route::post('posts/store', [PostController::class, 'store']);
+    Route::get('posts/{post}', [PostController::class, 'show']);
+    Route::delete('posts/{post}', [PostController::class, 'destroy']);
+
+    Route::post('posts/{post}/comments', [CommentController::class, 'store']);
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
+
+    Route::post('posts/{post}/like', [LikeController::class, 'store']);
+    Route::delete('posts/{post}/like', [LikeController::class, 'destroy']);
+// });

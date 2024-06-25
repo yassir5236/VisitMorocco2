@@ -20,6 +20,8 @@ import Guide from '../../sections/GuideVoyage/Guide';
 import RegionSearch from '../../sections/GuideVoyage/RegionSearch';
 
 import './Dashboard.css';
+import PostList from '../../sections/Posts/PostList';
+import CreatePostForm from '../../sections/Posts/CreatePostForm';
 
 
 const Dashboard = () => {
@@ -34,46 +36,46 @@ const Dashboard = () => {
       {/* <ListRegion /> */}
 
 
-      
 
 
 
 
 
 
-{/*       
+
+      {/*       
       <ListTypes />
       <InteretList />
       <CategoryList/>*/}
 
-      <ListDestinations /> 
+      {/* <ListDestinations />  */}
 
 
 
 
 
+      <CreatePostForm/>
+      <PostList />
 
 
+      {/* <AddDestinationForm /> */}
 
-
-       <AddDestinationForm /> 
-
-      <SearchDestinations />
+      {/* <SearchDestinations /> */}
       {/* <BookActivity/>
       <SearchActivities/> */}
-       {/* <AddActivity/> */}
+      {/* <AddActivity/> */}
       {/* <ActivityList/> */}
 
       {/* <AddConseilForm/> */}
       {/* <ListArticles/> */}
 
-     
-      
+
+
 
 
       {/* <SimpleMap /> */}
-      
-      
+
+
 
       <div className='flex ml-10'>
 

@@ -92,6 +92,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 import { Link } from 'react-router-dom'; // Import Link for navigation
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 const SearchDestinations = () => {
     const [destinations, setDestinations] = useState([]);
@@ -125,7 +127,11 @@ const SearchDestinations = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg m-10">
+
+        <>
+
+        <Header/>
+         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg m-10">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Search Destinations</h1>
             <div className="mb-6">
                 <input
@@ -155,7 +161,12 @@ const SearchDestinations = () => {
                                     ))}
                                 </div>
                             </Link>
-                         
+                            <Link
+                                to={`/destination/${destination.id}`} // Link to the detailed destination page
+                                className="mt-4 bg-stone-400 w-24 text-white text-sm px-1 py-1 rounded hover:bg-stone-400     block text-center"
+                            >
+                                Details
+                            </Link>
 
   
                         </div>
@@ -163,6 +174,11 @@ const SearchDestinations = () => {
                 </div>
             </div>
         </div>
+
+
+        <Footer/>
+        </>
+       
     );
 };
 

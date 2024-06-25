@@ -162,7 +162,7 @@ function Header() {
                     {/* <Link to="/About" className="text-white hover:text-gray-200">About Us</Link> */}
                     <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
 
-                    {/* <Link to="/AddRegionForm" className="text-white hover:text-gray-200">AddRegionForm</Link> */}
+                    <Link to="/DestinationDisplay" className="text-white hover:text-gray-200">Destination</Link>
 
                     <div className="hs-dropdown relative inline-flex">
                       <button

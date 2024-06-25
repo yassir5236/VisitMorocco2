@@ -52,6 +52,12 @@ const App = () => {
           <Route path="/" exact  element={<SearchDestinations /> }/>
           
           <Route path="/destination/:id"  element={<DestinationDetails />}  />
+
+
+          
+          <Route path="/DestinationDisplay"  element={<SearchDestinations />}  />
+
+          
          
 
 
