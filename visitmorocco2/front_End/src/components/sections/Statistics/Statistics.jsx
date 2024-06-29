@@ -1,7 +1,7 @@
 
 
 // src/pages/Statistics.js
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Paper, Typography, CircularProgress, Box } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
@@ -26,7 +26,6 @@ const Statistics = () => {
         return <CircularProgress />;
     }
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
     return (
         <>

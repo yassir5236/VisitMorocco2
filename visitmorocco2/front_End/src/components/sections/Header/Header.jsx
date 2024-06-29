@@ -1,45 +1,42 @@
+
+
+
 import './Header.css';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-
-
-
-
 function Header() {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user_info'));
+  const userImage = user.image;
 
 
-  const navigate = useNavigate()
-  let user = JSON.parse(localStorage.getItem('user_info'))
+
+
+
 
   function Logout() {
-    localStorage.removeItem("user_info")
-    navigate("/login")
+    localStorage.removeItem("user_info");
+    navigate("/login");
   }
 
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
 
   // Function to toggle the mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-
   // Function to toggle the dropdown menu
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-
-
   return (
-
-
-    <nav className="bg-sky-600 p-4  ">
-      <div className="container mx-auto flex justify-between  items-center">
+    <nav className="bg-sky-600 p-4">
+      <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
           <svg
@@ -49,8 +46,8 @@ function Header() {
             enableBackground="new 0 0 32 32"
             version="1.1"
             xmlSpace="preserve"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
+            xmlns="http:www.w3.org/2000/svg"
+            xmlnsXlink="http:www.w3.org/1999/xlink"
             fill="#000000"
             className='mr-2'
           >
@@ -144,88 +141,60 @@ function Header() {
           <span className="text-white text-2xl font-bold">TravelTix</span>
         </div>
 
-
         {/* Navigation Links */}
+        <div className="hidden md:flex space-x-8">
+          {/* Conditional rendering based on user role */}
+          {user && (
+            <>
+              {user.role === 'admin' ? (
+                <>
+                  <Link to="/Dashboard" className="text-white hover:text-gray-200">Dashboard</Link>
+                  <Link to="/" className="text-white hover:text-gray-200">Home</Link>
+                  <Link to="/Articles" className="text-white hover:text-gray-200">Conseil</Link>
+                  <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
+                  <Link to="/DestinationDisplay" className="text-white hover:text-gray-200">Destination</Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/" className="text-white hover:text-gray-200">Home</Link>
+                  <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
+                  <Link to="/DisplayDestination" className="text-white hover:text-gray-200">Destination</Link>
+                  <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
+                  <Link to="/Articles" className="text-white hover:text-gray-200">Conseil</Link>
+                </>
+              )}
+            </>
+          )}
 
-        {/* Navigation Links */}
-        <div className="hidden md:flex space-x-6">
-          {
-            (() => {
-              const userInfo = JSON.parse(localStorage.getItem('user_info'));
-              if (userInfo && userInfo.role === 'admin') {
-                return (
-                  <>
-                    <Link to="/Dashboard" className="text-white hover:text-gray-200">Dashboard</Link>
-                    <Link to="/" className="text-white hover:text-gray-200">Home</Link>
+          {/* Dropdown for user actions */}
 
-                    <Link to="/Articles" className="text-white hover:text-gray-200">Conseil</Link>
-                    {/* <Link to="/About" className="text-white hover:text-gray-200">About Us</Link> */}
-                    <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
-
-                    <Link to="/DestinationDisplay" className="text-white hover:text-gray-200">Destination</Link>
-
-                    <div className="hs-dropdown relative inline-flex">
-                      <button
-                        id="hs-dropdown-default"
-                        type="button"
-                        className="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                        onClick={toggleDropdown}
-                      >
-                        {`${user ? user.nomUtilisateur : ''}`}
-                        <svg className={`hs-dropdown-open:rotate-180 size-4 ${isDropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="m6 9 6 6 6-6" />
-                        </svg>
-                      </button>
-                      <div className={`hs-dropdown-menu transition-[opacity,margin] duration ${isDropdownOpen ? 'opacity-100' : 'opacity-0 hidden'} min-w-60 bg-white shadow-md rounded-lg p-2 mt-2`} aria-labelledby="hs-dropdown-default">
-                        <button onClick={Logout} className="flex   items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">Logout</button>
-                      </div>
-                    </div>
-                  </>
-                );
-              } else if (userInfo && userInfo.role === 'user') {
-                return (
-                  <>
-                    <Link to="/" className="text-white hover:text-gray-200">Home</Link>
-                    {/* <Link to="/AddDestination" className="text-white hover:text-gray-200">Add Destination</Link> */}
-                    <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
-                    <Link to="/DisplayDestination" className="text-white hover:text-gray-200">Destination</Link>
-                    <Link to="/DisplayActivity" className="text-white hover:text-gray-200">Activity</Link>
-                    <Link to="/Articles" className="text-white hover:text-gray-200">Conseil</Link>
-
-
-
-                    <div className="hs-dropdown relative inline-flex">
-                      <button
-                        id="hs-dropdown-default"
-                        type="button"
-                        className="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                        onClick={toggleDropdown}
-                      >
-                        {`${user ? user.nomUtilisateur : ''}`}
-                        <svg className={`hs-dropdown-open:rotate-180 size-4 ${isDropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="m6 9 6 6 6-6" />
-                        </svg>
-                      </button>
-                      <div className={`hs-dropdown-menu transition-[opacity,margin] duration ${isDropdownOpen ? 'opacity-100' : 'opacity-0 hidden'} min-w-60 bg-white shadow-md rounded-lg p-2 mt-2`} aria-labelledby="hs-dropdown-default">
-                        <button onClick={Logout} className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">Logout</button>
-                      </div>
-                    </div>
-                  </>
-                );
-              } else {
-                return (
-                  <>
-                    <Link to="/" className="text-white hover:text-gray-200">Home</Link>
-                    <Link to="/About" className="text-white hover:text-gray-200">About Us</Link>
-                    <Link to="/Register" className="text-white hover:text-gray-200">Register</Link>
-                    <Link to="/Login" className="text-white hover:text-gray-200">Login</Link>
-                  </>
-                );
-              }
-            })()
-          }
         </div>
+        <div className="hs-dropdown   relative inline-flex">
+          <button
+            id="hs-dropdown-default"
+            type="button"
+            className="hs-dropdown-toggle p-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg   bg-sky-600  text-white shadow-sm hover:bg-sky-400 disabled:opacity-50 disabled:pointer-events-none"
+            onClick={toggleDropdown}
+          >
+            {userImage && (
+              <img
+                src={`http://127.0.0.1:8000/storage/${userImage}`}
+                alt="User Profile"
+                className="w-12 h-12 rounded-full"
+              />
 
+
+            )}
+            {`${user ? user.nomUtilisateur : ''}`}
+            <svg className={`hs-dropdown-open:rotate-180 size-4 ${isDropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+
+          <div className={` duration ${isDropdownOpen ? 'opacity-100' : 'opacity-0 hidden'} min-w-10 bg-sky-500 shadow-md rounded-lg  mt-2`} aria-labelledby="hs-dropdown-default">
+            <button onClick={Logout} className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none " href="#">Logout</button>
+          </div>
+        </div>
 
         {/* Search Bar */}
         <div className="relative text-gray-600 hidden md:block">
@@ -248,7 +217,7 @@ function Header() {
               width="512px"
               height="512px"
             >
-              <path d="M55.146,51.887l-14.2-14.201c3.486-4.209,5.563-9.548,5.563-15.385C46.509,9.688,36.321,0.5,23.254,0.5 S0,9.688,0,21.968s10.188,21.468,23.254,21.468c5.837,0,11.176-2.077,15.384-5.563l14.2,14.2 c1.177,1.177,3.073,1.177,4.249,0C56.322,54.96,56.322,53.064,55.146,51.887z M23.254,37.936c-8.816,0-15.968-7.152-15.968-15.968 S14.438,6,23.254,6s15.968,7.152,15.968,15.968S32.07,37.936,23.254,37.936z" />
+              {/* SVG content */}
             </svg>
           </button>
         </div>
@@ -279,11 +248,8 @@ function Header() {
         <a href="/about" className="block text-white hover:text-gray-200">About Us</a>
         <a href="/Register" className="block text-white hover:text-gray-200">Register</a>
       </div>
-    </nav >
-
-
-
-  )
+    </nav>
+  );
 }
 
-export default Header
+export default Header;

@@ -37,26 +37,26 @@ const Dashboard = () => {
       {/* <ListRegion /> */}
 
 
-      <Statistics />
+      {/* <Statistics /> */}
 
 
 
 
 
 
-      {/*       
+             
       <ListTypes />
       <InteretList />
-      <CategoryList/>*/}
-
-      {/* <ListDestinations />  */}
-
-
+      <CategoryList/>
+{/* 
+      <ListDestinations />   */}
 
 
 
-      <CreatePostForm />
-      <PostList />
+
+
+      {/* <CreatePostForm />
+      <PostList /> */}
 
 
       {/* <AddDestinationForm /> */}
