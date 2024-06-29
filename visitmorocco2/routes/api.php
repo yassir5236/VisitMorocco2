@@ -18,6 +18,8 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\AdminController;
+
 
 
 
@@ -229,3 +231,6 @@ Route::delete('regions/{region}/restaurants/{restaurant}', [RestaurantController
     Route::post('posts/{post}/like', [LikeController::class, 'store']);
     Route::delete('posts/{post}/like', [LikeController::class, 'destroy']);
 // });
+
+
+Route::get('admin/statistics', [AdminController::class, 'getStatistics']);

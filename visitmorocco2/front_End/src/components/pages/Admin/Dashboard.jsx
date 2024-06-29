@@ -22,6 +22,7 @@ import RegionSearch from '../../sections/GuideVoyage/RegionSearch';
 import './Dashboard.css';
 import PostList from '../../sections/Posts/PostList';
 import CreatePostForm from '../../sections/Posts/CreatePostForm';
+import Statistics from '../../sections/Statistics/Statistics';
 
 
 const Dashboard = () => {
@@ -36,7 +37,7 @@ const Dashboard = () => {
       {/* <ListRegion /> */}
 
 
-
+      <Statistics />
 
 
 
@@ -54,7 +55,7 @@ const Dashboard = () => {
 
 
 
-      <CreatePostForm/>
+      <CreatePostForm />
       <PostList />
 
 

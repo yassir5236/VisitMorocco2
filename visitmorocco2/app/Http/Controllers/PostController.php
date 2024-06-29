@@ -7,13 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // public function index()
-    // {
-    //     // $posts = Post::with('user', 'comments', 'likes')->orderByDesc('created_at')->get();
-    //     $posts = Post::all();
-
-    //     return response()->json($posts);
-    // }
+ 
 
    
     public function index()
