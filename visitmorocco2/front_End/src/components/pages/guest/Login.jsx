@@ -13,11 +13,11 @@ const Login = () => {
   const navigate = useNavigate();
 
 
-  useEffect(()=>{
-    if (localStorage.getItem("user_info")){
-        navigate("/AddDestination")
-    }
-  },[])
+  // useEffect(()=>{
+  //   if (localStorage.getItem("user_info")){
+  //       navigate("/AddDestination")
+  //   }
+  // },[])
 
   const handleLogin = async () => {
     try {

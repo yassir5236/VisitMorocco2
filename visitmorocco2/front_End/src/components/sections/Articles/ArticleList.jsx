@@ -50,7 +50,7 @@ const ArticleList = () => {
         fetchArticles();
     }, []);
 
-    if (loading) return <p>Chargement...</p>;
+    // if (loading) return <p>Chargement...</p>;
     if (error) return <p>{error}</p>;
 
     const handleDelete = async (id) => {
